@@ -78,3 +78,7 @@ input {
   text-transform: capitalize;
   cursor: pointer;
 }
+
+input.error {
+  border: 2px solid #df4240;
+}

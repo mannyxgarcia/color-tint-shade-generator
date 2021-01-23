@@ -1,20 +1,28 @@
 import React, { useState } from 'react'
 import { SingleColor } from './SingleColor'
 import { Compliment } from './Compliment'
-import getColorsArray from './utils'
+import util from './utils'
 import example from './example'
 import './main.css';
 
 function App() {
   
-  const [color, setColor] = useState('')
-  const [error, setError] = useState(false)
-  const [list, setList] = useState(example)
+  let [color, setColor] = useState('')
+  let [error, setError] = useState(false)
+  let [list, setList] = useState(example)
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    let colorsArray = getColorsArray(color)
-    setList(colorsArray)
+    let formatedHex = util.formatHex(color.toUpperCase())
+    if(formatedHex === false){
+      setError(true)
+      console.error('error')
+    } else {
+      let colorsArray = util.getColorsArray(color)
+      setError(false)
+      setList(colorsArray)    
+    }  
+
   }
   
   return (
@@ -26,7 +34,8 @@ function App() {
             type='text'
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            placeholder='#e27eae'
+            placeholder='#E27EAE'
+            className={`${error ? 'error' : null}`}
           />
           <button className='btn' type='submit'>
             submit

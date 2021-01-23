@@ -76,4 +76,23 @@ function getComplimentaryColor(rgb){
   return hexFromRGB
 }
 
-export default getColorsArray
+function formatHex(hex){
+  if(hex[0] === '#'){
+    hex = hex.slice(1)
+  }
+  if(hex.length === 3){
+    hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`
+  }
+  if(hex.length < 6 || hex.length > 6){
+    return false
+  }
+  let regEx = /[^a-z\d]/i;
+  let isValid = !(regEx.test(hex))
+  if(isValid){
+    return `#${hex}`
+  } else {
+    return false
+  }
+}
+
+export default { getColorsArray, formatHex }
