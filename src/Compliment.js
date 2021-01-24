@@ -7,10 +7,13 @@ export const Compliment = ({color}) => {
     <>
     <div 
       className='color'
-      style={{ backgroundColor: `${color.compliment}`}}
-      >
-      {color.compliment}
-      {color.primary ? 'Primary!' : null}
+      style={{ backgroundColor: `${color.compliment}`}}>
+      <div className={color.index < 4 ? 'selected-dark-hex' : 'selected-light-hex'}>
+        {color.compliment}
+      </div>
+      <div className={color.index < 4 ? 'selected-dark' : 'selected-light'}>
+        {color.primary ? 'C' : null}
+      </div>
     </div>
   </>
   )

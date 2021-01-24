@@ -11,15 +11,39 @@ function getColorsArray(primaryHex) {
   //extract lightness
   let lightness = primaryHSL[2]
   let primaryHSLIndex = Number(lightness[0])
+  console.log(lightness)
+  let singleNum = false
+  if(String(lightness).length === 1) {
+    singleNum = true
+    primaryHSLIndex = 0
+  }
 
   //fills colorsArray with HSL and index info
   for(let i = 0; i < colorsArray.length; i++){
-    colorsArray[i] = {
-      index: i, 
-      hsl: [(primaryHSL[0]), primaryHSL[1], `${i}${primaryHSL[2][1]}`], 
-      hex:'', 
-      primary: false
+    if(singleNum === true && i === 0){
+      colorsArray[i] = {
+        index: i, 
+        hsl: [(primaryHSL[0]), primaryHSL[1], primaryHSL[2]], 
+        hex:'', 
+        primary: false
+      }
+    } else if(singleNum === true && i > 0) {
+      colorsArray[i] = {
+        index: i, 
+        hsl: [(primaryHSL[0]), primaryHSL[1], `${i}${primaryHSL[2]}`], 
+        hex:'', 
+        primary: false
+      } 
+    } else {
+      console.log('here')
+      colorsArray[i] = {
+        index: i, 
+        hsl: [(primaryHSL[0]), primaryHSL[1], `${i}${primaryHSL[2][1]}`], 
+        hex:'', 
+        primary: false
+      } 
     }
+    console.log(colorsArray)
     //determines which color in the array is primary
     if(i === primaryHSLIndex){
       colorsArray[i].primary = true

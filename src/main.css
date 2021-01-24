@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -14,6 +18,26 @@ h1 {
 
 h2 {
   font-size: 1.4rem;
+}
+
+.selected-light {
+  color: black;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.selected-dark {
+  color: white;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.selected-light-hex {
+  color: black;
+}
+
+.selected-dark-hex {
+  color: #f5f5f5;
 }
 
 .container {
@@ -35,6 +59,12 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     grid-template-rows: repeat(3, minmax(95px, auto));
   }
+  .selected-dark {
+    font-size: 1.2rem;
+  }
+  .selected-light {
+    font-size: 1.2rem;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -44,6 +74,12 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     grid-template-rows: repeat(10, minmax(95px, auto));
   }
+  .selected-dark {
+    font-size: 1.2rem;
+  }
+  .selected-light {
+    font-size: 1.2rem;
+  }
 }
 
 .color {
@@ -51,6 +87,8 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   text-transform: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .primary-color {
