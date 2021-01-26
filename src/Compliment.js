@@ -17,7 +17,7 @@ export const Compliment = ({color}) => {
       style={{ backgroundColor: `${color.compliment}`}}
       onClick={() => {
         setAlert(true)
-        navigator.clipboard.writeText(color.hex)
+        navigator.clipboard.writeText(color.compliment)
       }}
       >
       <div className={color.index < 4 ? 'selected-dark-hex' : 'selected-light-hex'}>
